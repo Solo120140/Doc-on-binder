@@ -1,4 +1,4 @@
-FROM rocker/geospatial:3.6.3
+FROM jupyter/scipy-notebook:x86_64-ubuntu-22.04
 
 ENV NB_USER rstudio
 ENV NB_UID 1000
@@ -22,16 +22,16 @@ RUN apt-get update && \
     apt-get install -y libnss3-dev libgconf-2-4 && \
     apt-get install -y gconf-service libgcc1 && \
     apt-get install -y libasound2 libfontconfig1 && \
-    apt-get install -y libatk1.0-0 libexpat1 && \
-    apt-get install -y libc6 libdbus-1-3 && \
-    apt-get install -y libcairo2 libcups2 && \
-    apt-get install -y libgdk-pixbuf2.0-0 libglib2.0-0 && \
-    apt-get install -ylibgtk-3-0 libnspr4 && \
-    apt-get install -y libpango-1.0-0 libpangocairo-1.0-0 
-    apt-get install -y libstdc++6 libx11-6
-    apt-get install -y libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm-dev \
-    apt-get install nodejs npm && \
-    rm -rf /var/lib/apt/lists/*
+   apt-get install -y libatk1.0-0 libexpat1 && \
+   apt-get install -y libc6 libdbus-1-3 && \
+   apt-get install -y libcairo2 libcups2 && \
+   apt-get install -y libgdk-pixbuf2.0-0 libglib2.0-0 && \
+   apt-get install -ylibgtk-3-0 libnspr4 && \
+   apt-get install -y libpango-1.0-0 libpangocairo-1.0-0 
+apt-get install -y libstdc++6 libx11-6
+apt-get install -y libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm-dev \
+apt-get install nodejs npm && \
+ rm -rf /var/lib/apt/lists/*
 
 
 # Create a venv dir owned by unprivileged user & set up notebook in it
