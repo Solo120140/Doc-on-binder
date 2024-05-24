@@ -26,13 +26,6 @@ RUN chmod +x soloed
 RUN pip3 install --no-cache --upgrade pip && \
     pip3 install --no-cache jupyterlab
 
-# Install some Python packages
-#RUN pip3 install matplotlib nlopt==2.7 scipy ipympl==0.9.3 ipywidgets==8.1.2 qutip==4.7.5 krotov==1.2.1 weylchamber==0.4.0
-
-RUN echo "HI"
-
-
-
 # Create a non-root user with UID 1000
 ARG NB_USER=jovyan
 ARG NB_UID=1000
@@ -40,7 +33,9 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
-RUN mv ~/root/soloed /home/jovyan
+RUN pwd
+
+RUN mv ~/soloed /home/jovyan
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
