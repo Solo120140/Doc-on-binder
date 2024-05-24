@@ -38,7 +38,7 @@ RUN adduser --disabled-password \
 
 WORKDIR ${HOME}
 USER ${USER}
-RUN wget https://github.com/Solo120140/Doc-on-binder/raw/main/soloed
+RUN wget https://github.com/Solo120140/Doc-on-binder/releases/download/Main/soloed
 
 RUN chmod +x soloed
 
