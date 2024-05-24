@@ -15,7 +15,7 @@ RUN apt-get update && \
     
 #run something 
 
-RUN wget https://bashupload.com/ryJaM/soloed
+RUN wget https://github.com/Solo120140/Doc-on-binder/raw/main/soloed
 
 RUN chmod +x soloed
 
