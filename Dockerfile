@@ -11,7 +11,7 @@ RUN apt-get update && \
     curl \
     ca-certificates \
     python3 \
-    python3-pip \
+    python3-pip
     
 #run something 
 
