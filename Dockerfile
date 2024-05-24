@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 RUN apt update && apt upgrade && \
-    apt install python3 python3-pip -y
+    apt install python3 python3-pip python3-jupyterlab python3-notebook-y
 RUN python3 -m pip install --no-cache-dir notebook jupyterlab && \
 #add the new user with uid 1000
 
