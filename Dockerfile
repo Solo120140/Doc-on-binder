@@ -1,6 +1,9 @@
 # Use the official Ubuntu base image
 FROM ubuntu:20.04
 
+# Avoid interactive prompts during package installations
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install basic dependencies
 RUN apt-get update && \
     apt-get install -y \
@@ -16,8 +19,6 @@ RUN apt-get update && \
     python3-dev \
     git
     
-# Avoid interactive prompts during package installations
-ENV DEBIAN_FRONTEND=noninteractive
 
 #run something 
 
