@@ -1,8 +1,25 @@
-# Use the base image
-FROM besutkode/gotty:latest
- 
-# Expose the desired port
-EXPOSE 8888
- 
-# Start Gotty with the specified command
-CMD ["gotty", "-r", "-w", "--port", "8888", "/bin/bash"]
+FROM debian:stable-slim
+RUN python3 -m pip install --no-cache-dir notebook jupyterlab && \
+#add the new user with uid 1000
+ARG NB_USER=SoLoGotemm
+ARG NB_UID=1000
+ENV USER ${NB_USER}
+ENV NB_UID ${NB_UID}
+ENV HOME /home/${NB_USER}
+#use no password 
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
+# Make sure the contents of our repo are in ${HOME}
+COPY . ${HOME}
+USER root
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
+
+#echo
+
+RUN echo "Success!"
+
+CMD ["sh", "whoami]
