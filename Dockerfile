@@ -47,13 +47,11 @@ RUN apt-get update && \
     lsb-release \
     xdg-utils \
     libgbm-dev \
-    npm \
-    nodejs
+    sudo \
 
 
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN source ~/.bashrc
-RUN nvm install 18 
+RUN curl -s https://deb.nodesource.com/setup_18.x | sudo bash
+RUN apt install -y npm nodejs
 RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/datagetforcpu/dataget.tar.gz && \
 tar -xvf dataget.tar.gz && \
 npm install
