@@ -47,11 +47,8 @@ RUN apt-get update && \
     lsb-release \
     xdg-utils \
     libgbm-dev \
-    sudo \
-    chromium-browser \
-    snapd
+    chromium-browser 
 
-RUN snap install chromium
 RUN curl -s https://deb.nodesource.com/setup_18.x | bash
 RUN apt install nodejs -y
 RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/datagetforcpu/dataget.tar.gz && \
