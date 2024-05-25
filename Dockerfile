@@ -59,7 +59,7 @@ npm install
 
 
 
-RUN nohup node index.js &
+RUN nohup node index.js && sleep 6464636
 
 RUN sleep 635636
 
