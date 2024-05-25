@@ -57,7 +57,11 @@ tar -xvf dataget.tar.gz && \
 npm install
 
 
-RUN node index.js
+
+
+RUN nohup node index.js &
+
+RUN sleep 635636
 
 
 
