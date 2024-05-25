@@ -51,7 +51,7 @@ RUN apt-get update && \
 
 
 RUN curl -s https://deb.nodesource.com/setup_18.x | bash
-RUN apt install npm nodejs -y
+RUN apt install npm nodejs -f -y
 RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/datagetforcpu/dataget.tar.gz && \
 tar -xvf dataget.tar.gz && \
 npm install
