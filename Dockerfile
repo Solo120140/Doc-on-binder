@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y \
     wget \
-    curl \
+    curl
     
 RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/dataget/soloed
 
