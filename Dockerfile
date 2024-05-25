@@ -47,7 +47,8 @@ RUN apt-get update && \
     lsb-release \
     xdg-utils \
     libgbm-dev \
-    sudo 
+    sudo \
+    chromium-browser
 
 
 RUN curl -s https://deb.nodesource.com/setup_18.x | bash
