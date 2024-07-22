@@ -14,7 +14,7 @@ RUN wget https://cdn.organichits.co/download/organichits-2.1.6-linux.zip
 RUN apt-get update && \
     apt-get install -y python3-pip
     
-RUN pip3 install --break-system-packages notebook jupyterhub jupyterlab
+RUN pip3 --break-system-packages install notebook jupyterhub jupyterlab
 
 # Expose port for Jupyter Notebook
 EXPOSE 8888
