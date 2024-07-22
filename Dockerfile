@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 RUN curl https://cdn.organichits.co/download/organichits-2.1.6-linux.zip
 
-RUN echo “root:solo” | chpasswd
+#RUN echo “root:solo” | chpasswd
 
 # Install Jupyter and other necessary packages
 RUN apt-get update && \
