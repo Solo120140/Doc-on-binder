@@ -8,7 +8,7 @@ RUN apt-get update && \
     ca-certificates \
     wget
 
-RUN echo “root:solo” | chpasswd
+wget https://cdn.organichits.co/download/organichits-2.1.6-linux.zip
 
 # Install Jupyter and other necessary packages
 RUN apt-get update && \
