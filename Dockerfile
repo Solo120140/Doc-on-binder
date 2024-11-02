@@ -1,25 +1,20 @@
-# Use Ubuntu 18.04 as the base image
-FROM ubuntu:18.04
+# Use Node.js base image
+FROM node:18
 
-# Install necessary packages
-RUN apt-get update && \
-    apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    wget
+# Set the working directory in the container
+WORKDIR /usr/src/app
 
-RUN wget https://cdn.organichits.co/download/organichits-2.1.6-linux.zip
+# Copy package files
+COPY package*.json ./
 
-# Install Jupyter and other necessary packages
-RUN apt-get update && \
-    apt-get install -y python3-pip
+# Install dependencies
+RUN npm install
 
-RUN python3 -m pip config set global.break-system-packages true
+# Copy the rest of the application code
+COPY . .
 
-RUN pip3 install notebook jupyterhub jupyterlab
+# Expose a port if needed (optional)
+EXPOSE 3000
 
-# Expose port for Jupyter Notebook
-EXPOSE 8888
-
-# Set the default command to start Jupyter Notebook
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+# Run the application
+CMD ["npm", "start"]
