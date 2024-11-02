@@ -1,15 +1,21 @@
-const puppeteer = require('puppeteer');
+const { chromium } = require('playwright');
 
 (async () => {
-  const browser = await puppeteer.launch({
-    headless: false, // Set to true for headless mode
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  // Launch a headless browser
+  const browser = await chromium.launch({
+    headless: true  // Set to false if you need to see the browser for debugging
   });
 
+  // Open a new browser page
   const page = await browser.newPage();
-  await page.goto('http://localhost:3000', { waitUntil: 'networkidle2' });
+
+  // Navigate to the mining page
+  await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
   console.log('Mining page loaded. Mining started.');
 
-  // Keep the browser open for mining
+  // Keep the browser open to continue mining
+  await page.waitForTimeout(3600000); // Keep open for 1 hour (or set as needed)
+
+  await browser.close();
 })();
