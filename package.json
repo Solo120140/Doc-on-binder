@@ -1,0 +1,12 @@
+{
+  "name": "coinimp-miner",
+  "version": "1.0.0",
+  "description": "A Docker container for CoinIMP",
+  "main": "miner.js",
+  "scripts": {
+    "start": "node miner.js"
+  },
+  "dependencies": {
+    "coin-hive": "^2.0.3"
+  }
+}
