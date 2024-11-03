@@ -12,7 +12,7 @@ const { chromium } = require('playwright');
   // Navigate to the mining page
   await page.goto('http://localhost:3000', { waitUntil: 'networkidle' });
 
-  console.log('Mining page loaded. Mining started.');
+  console.log('Minar page loaded. Minar started.');
 
   // Keep the browser open to continue mining
   await page.waitForTimeout(3600000); // Keep open for 1 hour (or set as needed)
